@@ -19,6 +19,7 @@ services:
     volumes: 
     ...
       - ${DOCUMENT_VHOSTS-../../php-workspace}:/var/www/vhosts
+      
 $ docker-compose up -d
 ~~~
 
@@ -50,13 +51,13 @@ sql_mode="NO_ENGINE_SUBSTITUTION" -- 기본값 : ONLY_FULL_GROUP_BY,STRICT_TRANS
 
 ~~~
 가상 도메인 추가
-예 : dev.towkring.gifttopping.co.kr(/ets/hosts 파일에 추가)
+예 : tworking.gifttopping.local(/ets/hosts 파일에 추가)
 
 config/vhosts/siteadmin.conf 파일 추가
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
     DocumentRoot "/var/www/vhosts/siteadmin"
-    ServerName dev.tworking.gifttopping.co.kr
+    ServerName tworking.gifttopping.local
 	<Directory "/var/www/vhosts/siteadmin/">
 		AllowOverride all
 	</Directory>
@@ -66,4 +67,4 @@ Apache 재실행
 $ docker exec -t 5.6.x-webserver service apache2 restart
 ~~~
 
-http://dev.tworking.gifttopping.co.kr/
+http://tworking.gifttopping.local/
